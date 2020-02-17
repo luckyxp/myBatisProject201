@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xp.dao.IUserDao">
+    <!--配置查询所有
+        resultType="com.xp.pojo.User"  将返回一个User对象
+        id="findAll"  唯一标识 调用此sql时使用
+        #{id} 类似于之前的?占位符 可以用来传值
+    -->
+    <select id="findAll" resultType="com.xp.pojo.User">
+        select * from tbl_user where id = #{id};
+    </select>
+</mapper>
