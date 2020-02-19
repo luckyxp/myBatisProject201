@@ -9,7 +9,7 @@
         <!--配置mysql环境-->
         <environment id="mysql">
             <!--配置事务的类型-->
-            <transactionManager type="JDBC"></transactionManager>
+            <transactionManager type="JDBC"/>
             <!--配置数据源(连接池)-->
             <dataSource type="POOLED">
                 <!--配置连接数据库的4个基本信息-->
@@ -22,6 +22,6 @@
     </environments>
     <!--指定映射配置文件的位置,映射配置文件指的是每个dao独立的配置文件-->
     <mappers>
-        <mapper resource="com/xp/dao/IUserDao.xml"/>
+        <mapper resource="com/xp/dao/BlogDao.xml"/>
     </mappers>
 </configuration>
