@@ -29,8 +29,13 @@ public class BlogService {
         for (Blog b : all){
             System.out.println(b);
         }
+        List<Blog> all2 = blogDao.sleAll();
+        for (Blog b : all){
+            System.out.println(b);
+        }
 //        System.out.println(blogDao.getById(1));
 //        System.out.println(blogDao.deleteById(9));
+//        System.out.println(blogDao.addBlog(new Blog("新冠疫情", "中国加油", new Date(), "疫情", 11)));
         sqlSession.commit();
         sqlSession.close();
     }

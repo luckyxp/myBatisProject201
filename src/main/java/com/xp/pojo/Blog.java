@@ -20,4 +20,12 @@ public class Blog {
   private Date createTime;
   private String type;
   private Integer authorId;
+
+  public Blog(String title, String content, Date createTime, String type, Integer authorId) {
+    this.title = title;
+    this.content = content;
+    this.createTime = createTime;
+    this.type = type;
+    this.authorId = authorId;
+  }
 }

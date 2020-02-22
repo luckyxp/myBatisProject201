@@ -12,4 +12,7 @@
     <delete id="deleteById">
         delete from blog where id = #{id};
     </delete>
+    <insert id="addBlog">
+        insert into blog values(null,#{title},#{content},#{createTime},#{type},#{authorId})
+    </insert>
 </mapper>
