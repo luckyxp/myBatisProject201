@@ -4,6 +4,17 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!--mybatis的主配置文件-->
 <configuration>
+    <settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <!--别名-->
+    <typeAliases>
+        <typeAlias type="com.xp.pojo.Blog" alias="Blog"/>
+        <typeAlias type="com.xp.pojo.Author" alias="Author"/>
+        <typeAlias type="com.xp.pojo.Comment" alias="Comment"/>
+    </typeAliases>
+
     <!--配置环境-->
     <environments default="mysql">
         <!--配置mysql环境-->
@@ -23,5 +34,7 @@
     <!--指定映射配置文件的位置,映射配置文件指的是每个dao独立的配置文件-->
     <mappers>
         <mapper resource="com/xp/dao/BlogDao.xml"/>
+        <mapper resource="com/xp/dao/AuthorDao.xml"/>
+        <mapper resource="com/xp/dao/CommentDao.xml"/>
     </mappers>
 </configuration>

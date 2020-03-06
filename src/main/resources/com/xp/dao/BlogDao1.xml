@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xp.dao.BlogDao">
+    <select id="getAll" resultType="Blog">
+        select id,title,content,create_time as createTime,type,author_id as authorId from blog;
+    </select>
+    
+    <resultMap id="contAuthorForBlog" type="Blog">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="create_time" property="createTime"/>
+        <result column="type" property="type"/>
+        <association property="author" javaType="com.xp.pojo.Author" column="author_id" resultMap="AuthorResultMap"/>
+    </resultMap>
+
+    <resultMap id="AuthorResultMap" type="com.xp.pojo.Author">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+        <result column="email" property="email"/>
+        <result column="address" property="address"/>
+        <result column="phone" property="phone"/>
+    </resultMap>
+    <select id="getById" resultMap="contAuthorForBlog">
+        select b.*,a.username from blog b,author a where b.author_id = a.id and b.id = #{id};
+    </select>
+
+    <select id="getByMore" resultMap="contAuthorForBlog">
+        select b.*,a.username from blog b,author a where b.author_id = a.id and b.id >= #{0} and type like #{1};
+    </select>
+
+    <delete id="deleteById">
+        delete from blog where id = #{id};
+    </delete>
+    <insert id="addBlog">
+        insert into blog values(null,#{title},#{content},#{createTime},#{type},#{authorId})
+    </insert>
+</mapper>
